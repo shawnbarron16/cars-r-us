@@ -1,5 +1,5 @@
 //Import the technology packages from the database
-import { getTechnology } from "./database.js"
+import { getTechnology, setTechnology } from "./database.js"
 
 //Save the return value of the imported function to a variable
 const packages = getTechnology()
@@ -20,3 +20,13 @@ export const packageList = () => {
 
     return html
 }
+
+//Add an event listener saves the value of the chosen option
+document.addEventListener(
+    "change",
+    (event) => {
+        if (event.target.name === "technology") {
+            setTechnology(parseInt(event.target.value))
+        }
+    }
+)

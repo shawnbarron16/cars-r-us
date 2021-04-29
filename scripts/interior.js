@@ -1,5 +1,5 @@
 //Import the interiors from the database
-import { getInterior } from "./database.js"
+import { getInterior, setInterior } from "./database.js"
 
 //Save the return value of the imported function to a variable
 const interiors = getInterior()
@@ -19,3 +19,13 @@ export const interiorList = () => {
 
     return html
 }
+
+//Add an event listener saves the value of the chosen option
+document.addEventListener(
+    "change",
+    (event) => {
+        if (event.target.name === "interior") {
+            setInterior(parseInt(event.target.value))
+        }
+    }
+)

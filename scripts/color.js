@@ -1,5 +1,5 @@
 //Import the colors from the database
-import {getColor} from "./database.js"
+import {getColor, setColor} from "./database.js"
 
 //Save the return values of the imported functions to variables
 const colors = getColor()
@@ -19,3 +19,13 @@ export const colorList = () => {
 
     return html
 }
+
+//Add an event listener saves the value of the chosen option
+document.addEventListener(
+    "change",
+    (event) => {
+        if (event.target.name === "color") {
+            setColor(parseInt(event.target.value))
+        }
+    }
+)
