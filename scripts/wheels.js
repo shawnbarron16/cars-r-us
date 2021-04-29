@@ -1,5 +1,5 @@
 //Import the wheels from the database
-import { getWheels } from "./database.js"
+import { getWheels, setWheels } from "./database.js"
 
 //Save the return value of the imported function to a variable
 const wheels = getWheels()
@@ -19,3 +19,13 @@ export const wheelsList = () => {
 
     return html
 }
+
+//Add an event listener saves the value of the chosen option
+document.addEventListener(
+    "change",
+    (event) => {
+        if (event.target.name === "wheels") {
+            setWheels(parseInt(event.target.value))
+        }
+    }
+)
