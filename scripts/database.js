@@ -61,7 +61,7 @@ const database = {
         },
         {
             id: 4,
-            prackage: "Ultra",
+            package: "Ultra",
             price: 100.00
         }
     ],
