@@ -90,6 +90,10 @@ const database = {
     customOrders: [
         {
             id: 1,
+            colorId: 1,
+            interiorId: 3,
+            technologyId: 2,
+            wheelsId: 1,
             timestamp: "4/29 6:10"
         }
     ],
@@ -127,7 +131,7 @@ export const setInterior = (id) => {
 }
 
 export const setTechnology = (id) => {
-    database.orderBuilder.tehcnologyId = id
+    database.orderBuilder.technologyId = id
 }
 
 export const setWheels = (id) => {
