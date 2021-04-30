@@ -3,6 +3,7 @@ import { colorList } from "./color.js"
 import { interiorList } from "./interior.js"
 import { packageList } from "./technology.js"
 import { wheelsList } from"./wheels.js"
+import { Orders } from "./orders.js"
 
 //Generate the html for the whole page
 export const cars = () => {
@@ -26,5 +27,14 @@ export const cars = () => {
             <h2>Wheels</h2>
             ${wheelsList()}
         </section>
-    </actrticle>`
+    </actrticle>
+
+    <article>
+        <button id="orderButton">Create Custom Order</button>
+    </article>
+    
+    <article class="custom-orders">
+        <h2>Custom Car Orders</h2>
+        ${Orders()}
+    </article>`
 }

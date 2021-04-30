@@ -89,16 +89,14 @@ const database = {
     ],
     customOrders: [
         {
-
+            id: 1,
+            timestamp: "4/29 6:10"
         }
     ],
-    orderBuilder: [
-        {
-
-        }
-    ]
+    orderBuilder: {}
 }
 
+//Create functions that export copies of the data in the database
 export const getColor = () => {
     return [...database.color]
 }
@@ -115,6 +113,11 @@ export const getWheels = () => {
     return [...database.wheels]
 }
 
+export const getOrders = () => {
+    return [...database.customOrders]
+}
+
+//Create and export functions that set the values of key-values in the orderBuilder object
 export const setColor = (id) => {
     database.orderBuilder.colorId = id
 }
@@ -129,4 +132,34 @@ export const setTechnology = (id) => {
 
 export const setWheels = (id) => {
     database.orderBuilder.wheelsId = id
+}
+
+
+//Create and export a function that saves the temporary order permantnly in the custom orders array
+export const saveOrder = () => {
+    if (database.customOrders.length === 0) {
+        database.customOrders.id = 1
+    }
+
+    const newOrder = {...database.orderBuilder}
+
+    newOrder.id = [...database.customOrders].pop().id + 1
+
+    const today = new Date();
+
+    const month = today.getMonth() + 1;
+
+    const day = today.getDate();
+
+    const time = today.getHours() + ":" + today.getMinutes();
+
+    const currentDate = `${month}/${day}  ${time}`;
+
+    newOrder.timestamp = currentDate
+
+    database.customOrders.push(newOrder)
+
+    database.orderBuilder = {}
+
+    document.dispatchEvent(new CustomEvent("StateChanged"))
 }
